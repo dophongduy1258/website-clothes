@@ -20,6 +20,8 @@ export default function Shop(props){
           setProducts(res.data);
           setLoading(false);
         });
+        console.log(`shop ${products}`);
+
   },[]);
 
 

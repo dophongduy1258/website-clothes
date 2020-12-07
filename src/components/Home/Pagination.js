@@ -4,25 +4,25 @@ import React,{useEffect,useState} from 'react'
 
 const  Pagination = (props)=>{
 
-  const [products,setProducts] = useState([])
-  const [loading,setLoading] = useState(false);
+  // const [products,setProducts] = useState([])
+  // const [loading,setLoading] = useState(false);
 
 
-  useEffect(()=>{
-    setLoading(true);
-    apiCaller('api/Product','GET',null)
-        .then((res)=>{
-          setProducts(res.data);
-          setLoading(false);
-        });
-        console.log(products)
-  },[]);
+  // useEffect(()=>{
+  //   setLoading(true);
+  //   apiCaller('api/Product','GET',null)
+  //       .then((res)=>{
+  //         setProducts(res.data);
+  //         setLoading(false);
+  //       });
+  //       console.log(products)
+  // },[]);
 
 
 
-  if(loading){
-      return <p>Loading products....</p>
-  }
+  // if(loading){
+  //     return <p>Loading products....</p>
+  // }
 
 
   

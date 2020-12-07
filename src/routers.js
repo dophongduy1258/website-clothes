@@ -3,8 +3,12 @@ import Home from './components/Home/Index'
 import Contact from './components/Contact/Index'
 import About from './components/About/Index'
 import Shop from './components/Shop/Index'
+import InfoItem from './components/Shop/InfoItem'
 import AddItem from './components/AddItem/Index'
 import ItemList from './components/Admin/ItemList'
+import ItemEdit from './components/Admin/ItemEdit'
+import UserList from './components/Admin/UserList'
+import UserEdit from './components/Admin/UserEdit'
 import Cart from './components/Cart/Index'
 import Login from './components/Login/Index'
 import Register from './components/Register/Index'
@@ -46,21 +50,21 @@ const routes = [
         exact:false,
         main:()=><Login/>
     },
-    // {
-    //     path:'/userList',
-    //     exact:false,
-    //     main:({history})=><UserList history={history}/>
-    // },
-    // {
-    //     path:'/:id/editUser',
-    //     exact:false,
-    //     main:({match,history})=><EditUser history={history} match={match}/>
-    // },
-    // {
-    //     path:'/:id/infoProduct',
-    //     exact:false,
-    //     main:({match,history})=><Info history={history} match={match}/>
-    // },
+    {
+        path:'/userList',
+        exact:false,
+        main:({history})=><UserList history={history}/>
+    },
+    {
+        path:'/:id/editUser',
+        exact:false,
+        main:({match,history})=><UserEdit history={history} match={match}/>
+    },
+    {
+        path:'/:id/infoProduct',
+        exact:false,
+        main:({match,history})=><InfoItem history={history} match={match}/>
+    },
     {
         path:'/addClothe',
         exact:false,
@@ -71,11 +75,11 @@ const routes = [
         exact:false,
         main:({history})=><ItemList history={history}/>
     },
-    // {
-    //     path:'/:id/editProduct',
-    //     exact:false,
-    //     main:({match,history})=><EditProduct history={history} match={match}/>
-    // },
+    {
+        path:'/:id/editProduct',
+        exact:false,
+        main:({match,history})=><ItemEdit history={history} match={match}/>
+    },
 ]
 export default routes;
 
