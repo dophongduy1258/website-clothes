@@ -2,10 +2,11 @@
 import React,{Component,useEffect,useState} from 'react'
 import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-dom';
 import { BiSearch ,BiLogOut} from "react-icons/bi";
+import { connect } from 'react-redux';
 
 
 
-export default class Header extends Component{
+class Header extends Component{
     constructor(props){
         super(props);
         
@@ -34,6 +35,7 @@ export default class Header extends Component{
     }
 
     render(){
+        var {_todoProduct} = this.props
         return (
         
             <div className="site-navbar-top">
@@ -59,7 +61,7 @@ export default class Header extends Component{
                             <li>
                                 <Link to="/cart/" className="site-cart">
                                 <span className="icon icon-shopping_cart" />
-                                <span className="count">2</span>
+                                <span className="count">{_todoProduct.numberCart}</span>
                             </Link>
                             </li> 
                             <li className="d-inline-block d-md-none ml-md-0"><a href="#" className="site-menu-toggle js-menu-toggle"><span className="icon-menu" /></a></li>
@@ -75,3 +77,11 @@ export default class Header extends Component{
     
 }
   
+
+const mapStateToProps = (state)=>{
+    return{
+        _todoProduct : state.productReducer
+    }
+}
+
+export default connect(mapStateToProps,null)(Header)

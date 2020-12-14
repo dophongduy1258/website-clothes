@@ -3,48 +3,7 @@ import apiCaller from './../../utils/apiCaller'
 
 import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-dom';
 import { Button } from 'reactstrap';
-// import '../css/productList/productList.css';
 import { FaEdit, FaTrashAlt} from "react-icons/fa";
-
-// export default function ItemList(props){
-
-//   const [products,setProducts] = useState([])
-//   const [loading,setLoading] = useState(false);
-
-//   useEffect(()=>{
-//     setLoading(true);
-//     apiCaller('api/Product','GET',null)
-//         .then((res)=>{
-//           setProducts(res.data);
-//           setLoading(false);
-//         });
-//         console.log(products);
-//   },[]);
-
-
-
-//   if(loading){
-//       return <p>Loading products....</p>
-//   }
-
-//   var ItemProduct = products.map((item,idx)=>{
-//     <tr key={idx}>
-//         <th scope="row">{idx}</th>
-//         <td>{item.name}</td>
-//         <td><img src={item.image} style={{width:'100px',height:'100px'}}/></td>
-//         <td>{item.price}</td>
-//         <td><span className={item.status === true?'badge badge-primary' : 'badge badge-dark'}>{item.status === true?"Còn hàng":"Hết hàng"}</span></td>
-//         <td>{item.quantity}</td>
-//         <td>{item.description}</td>
-//         <td >
-//             <div className="row">
-//                     <div className="col-3"><Button color="warning"><Link to={`/${item._id}/editProduct`}><FaEdit/></Link></Button></div>
-//                     <div className="col-3"></div>
-//                     <div className="col-3"><Button color="danger" onClick={()=>this.onDelete(item._id)}><FaTrashAlt/></Button></div>
-//             </div>
-//         </td>
-//     </tr>
-//   })
 
 export default class ItemList extends Component{
     constructor(props){
