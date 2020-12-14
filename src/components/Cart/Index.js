@@ -3,6 +3,10 @@ import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import {IncreaseQuantity,DecreaseQuantity,DeleteCart} from '../../actions/ProductActions'
+import {addToCart} from '../../actions/CartActions'
+
+
+
 
 function Cart ({items,IncreaseQuantity,DecreaseQuantity,DeleteCart}){
 
@@ -16,7 +20,7 @@ function Cart ({items,IncreaseQuantity,DecreaseQuantity,DeleteCart}){
         return Number(price * tonggia).toLocaleString('en-US');
     }
 
-
+    
 
         return (
         <>
@@ -151,4 +155,8 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps,{IncreaseQuantity,DecreaseQuantity,DeleteCart})(Cart)
+
+
+// export default connect(mapStateToProps,{IncreaseQuantity,DecreaseQuantity,DeleteCart})(Cart)
+
+export default connect(mapStateToProps,null)(Cart)

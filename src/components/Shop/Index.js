@@ -2,11 +2,12 @@
 import apiCaller from '../../utils/apiCaller'
 import React,{Component,useEffect,useState} from 'react'
 import { connect } from 'react-redux';
-import {addToCart, fetchProductRequest} from '../../actions/ProductActions'
+import {fetchProductRequest} from '../../actions/ProductActions'
+import {addToCart} from '../../actions/CartActions'
 import Paginations from './Pagination'
 import {BrowserRouter as Router,Route,Link,Redirect, Switch} from 'react-router-dom';
 import { Button, Pagination} from 'reactstrap';
-
+import Item from './Item'
 
 
 
@@ -30,6 +31,22 @@ class Shop extends Component{
         })
     }
 
+
+    // RENDER ITEM
+    showItem = (filterByKeyword)=>{
+        var result = null;
+        var {onAddToCart} =this.props;
+        if(filterByKeyword.length >0)
+        {
+            result = filterByKeyword.map((product,idx)=>{
+                return <Item key={idx} product={product} onAddToCart={onAddToCart}/>
+            }) 
+        }
+        return result;
+    }
+
+
+
     render(){
     var {keyword,currentPage,postPerPage} = this.state
     var {_todoProduct,addToCart} = this.props
@@ -49,24 +66,8 @@ class Shop extends Component{
     })
 
     
-    // RENDER ITEM
-    var element = filterByKeyword.map((product,idx)=>{
-        return(
-            <div className="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div className="block-4 text-center border">
-                <figure className="block-4-image">
-                <Link to={`/${product._id}/infoProduct`}><img src={product.image} alt="Image placeholder" className="img-fluid" /></Link>
-                </figure>
-                <div className="block-4-text p-4">
-                    <h3><Link to={`/${product._id}/infoProduct`}>{product.name}</Link></h3>
-                    <p className="mb-0">{product.description}</p>
-                    <p className="text-primary font-weight-bold">{product.price}</p>
-                </div>
-                <Button color="primary" className="btn  btn-sm btn-block" onClick={()=>addToCart(product)} >Add To Cart</Button>
-            </div>
-        </div>
-        )
-    })
+    
+
 
 
     //PAGINATION
@@ -179,7 +180,7 @@ class Shop extends Component{
                             {/* {filterByKeyword.map((product,idx)=>(
                                 <ItemProduct key={idx} onAddToCart={()=>onAddToCart(product)} {...product}/>
                             ))} */}
-                            {element}
+                            {this.showItem(filterByKeyword)}
                             {/* <Item filterByKeyword={filterByKeyword}/> */}
                         </div>
                             
@@ -303,11 +304,10 @@ const mapDispatchToProps = (dispatch,props)=>{
         fetchAllProducts : ()=>{
             dispatch(fetchProductRequest());
         },
-        addToCart :(payload)=>{
-            dispatch(addToCart(payload))
-        }
+        // onAddToCart :(item)=>{
+        //     dispatch(addToCart(item,1))
+        // }
     }
 }
-
 
   export default connect(mapStateToProps,mapDispatchToProps)(Shop)

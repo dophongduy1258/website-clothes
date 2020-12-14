@@ -14,9 +14,10 @@ export const fetchProduct = (products)=>({
     products // [{},...]
 })
 
-export const addToCart = (payload)=>({
+export const addToCart = (payload,quantity)=>({
     type :types.ADD_TO_CART,
-    payload
+    payload,
+    quantity
 })
 
 
